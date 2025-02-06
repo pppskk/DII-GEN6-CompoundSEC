@@ -1,33 +1,93 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
+        /*
+        Scanner scanner = new Scanner(System.in);
         CardManage manager = new CardManage();
 
-        // สร้างบัตรใหม่พร้อมสิทธิ์เข้าถึงชั้น
-        BaseCard card1 = new Card("C001", Arrays.asList(5, 8, 12));
-        BaseCard card2 = new Card("C002", Arrays.asList(3, 7));
+        while (true) {
+            // เมนูหลัก
+            System.out.println("\n=== 📇 Card Management System ===");
+            System.out.println("1️⃣ Add Card");
+            System.out.println("2️⃣ Remove Card");
+            System.out.println("3️⃣ Edit Card Access");
+            System.out.println("4️⃣ Display All Cards");
+            System.out.println("5️⃣ Exit");
+            System.out.print("Choose an option: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // เคลียร์ช่องว่างหลังการกรอกตัวเลข
 
-        // เพิ่มบัตรลงในระบบ
-        manager.addCard(card1);
-        manager.addCard(card2);
+            switch (choice) {
+                case 1:
+                    // เพิ่มบัตรใหม่
+                    System.out.print("Enter Card ID: ");
+                    String cardId = scanner.nextLine();
 
-        // แสดงข้อมูลบัตรทั้งหมด
-        manager.displayAllCards();
+                    System.out.print("Enter accessible floors (comma-separated, e.g., 3,5,8): ");
+                    String floorsInput = scanner.nextLine();
+                    List<Integer> floorAccess = new ArrayList<>();
+                    for (String floorStr : floorsInput.split(",")) {
+                        try {
+                            floorAccess.add(Integer.parseInt(floorStr.trim()));
+                        } catch (NumberFormatException e) {
+                            System.out.println("⚠️ Invalid floor: " + floorStr);
+                        }
+                    }
 
-        // เพิ่มและลบสิทธิ์การเข้าถึงชั้น
-        card1.addFloorAccess(10);
-        card1.removeFloorAccess(8);
+                    BaseCard newCard = new Card(cardId, floorAccess);
+                    manager.addCard(newCard);
+                    break;
 
-        // แสดงข้อมูลหลังจากแก้ไข
-        manager.displayAllCards();
+                case 2:
+                    // ลบบัตร
+                    System.out.print("Enter Card ID to remove: ");
+                    String removeId = scanner.nextLine();
+                    manager.removeCard(removeId);
+                    break;
+                case 3:
+                    System.out.print("Enter Card ID to edit: ");
+                    String editId = scanner.nextLine();
+                    BaseCard editCard = manager.findCard(editId);
+                    if (editCard != null) {
+                        System.out.print("Enter new accessible floors (comma-separated, e.g., 2,4,6): ");
+                        String newFloorsInput = scanner.nextLine();
+                        List<Integer> newFloorAccess = new ArrayList<>();
+                        for (String floorStr : newFloorsInput.split(",")) {
+                            try {
+                                newFloorAccess.add(Integer.parseInt(floorStr.trim()));
+                            } catch (NumberFormatException e) {
+                                System.out.println("⚠️ Invalid floor: " + floorStr);
+                            }
+                        }
+                        editCard.setFloorAccess(newFloorAccess);
+                        System.out.println("✅ Updated Card: " + editId + " with new floors: " + newFloorAccess);
+                    } else {
+                        System.out.println("⚠️ Card ID not found.");
+                    }
+                    break;
 
-        // ลบบัตร
-        manager.removeCard("C002");
+                case 4:
+                    // แสดงข้อมูลบัตรทั้งหมด
+                    manager.displayAllCards();
+                    break;
 
-        // แสดงข้อมูลบัตรหลังจากลบ
-        manager.displayAllCards();
+                case 5:
+                    // ออกจากโปรแกรม
+                    System.out.println("👋 Exiting the program. Goodbye!");
+                    scanner.close();
+                    return;
+
+                default:
+                    System.out.println("⚠️ Invalid option. Please choose again.");
+            }
+        }
+
+         */
+        new ElevatorAccessGUI();
 
     }
 }

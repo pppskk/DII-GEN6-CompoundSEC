@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class CardManage {
     private ArrayList<BaseCard> cards = new ArrayList<>();
@@ -7,16 +8,22 @@ public class CardManage {
         cards.add(card);
         System.out.println("✅ Added Card: " + card.getCardId());
     }
-
+/*
     public void displayAllCards() {
         System.out.println("\n📋 All Cards:");
-        for (BaseCard card : cards) {
-            card.displayCardInfo();
+        if (cards.isEmpty()){
+            System.out.println("No cards available.");
+        }else {
+            for (BaseCard card : cards) {
+                card.displayCardInfo();
+            }
         }
     }
 
     public void removeCard(String cardId) {
-        for (BaseCard card : cards) {
+        Iterator<BaseCard> iterator = cards.iterator();
+        while (iterator.hasNext()){
+            BaseCard card = iterator.next();
             if (card.getCardId().equals(cardId)) {
                 cards.remove(card);
                 System.out.println("❌ Removed Card: " + cardId);
@@ -24,5 +31,23 @@ public class CardManage {
             }
         }
         System.out.println("⚠️ Card ID not found: " + cardId);
+    }
+    public BaseCard findCard(String cardId) {
+        for (BaseCard card : cards) {
+            if (card.getCardId().equals(cardId)) {
+                return card;
+            }
+        }
+        return null;
+    }
+
+ */
+    public BaseCard getCardById(String cardId) {
+        for (BaseCard card : cards) {
+        if (card.getCardId().equals(cardId)) {
+            return card;
+            }
+        }
+        return null;
     }
 }

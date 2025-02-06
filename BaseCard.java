@@ -15,4 +15,14 @@ public abstract class BaseCard implements AccessControl {
         return floorAccess;
     }
 
+    @Override
+    public void displayCardInfo() {
+        System.out.println("Card ID: " + cardId + ", Accessible Floors: " + floorAccess);
+    }
+    /*
+    public void setFloorAccess(List<Integer> newAccess) {
+        this.floorAccess = newAccess;
+    }
+     */
+
 }

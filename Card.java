@@ -24,9 +24,11 @@ public class Card extends BaseCard {
             System.out.println("⚠️ Floor " + floor + " is not accessible by Card: " + cardId);
         }
     }
-
+/*
     @Override
     public void displayCardInfo() {
         System.out.println("Card ID: " + cardId + ", Accessible Floors: " + floorAccess);
     }
+
+ */
 }
