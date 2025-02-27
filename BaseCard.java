@@ -19,10 +19,5 @@ public abstract class BaseCard implements AccessControl {
     public void displayCardInfo() {
         System.out.println("Card ID: " + cardId + ", Accessible Floors: " + floorAccess);
     }
-    /*
-    public void setFloorAccess(List<Integer> newAccess) {
-        this.floorAccess = newAccess;
-    }
-     */
 
 }

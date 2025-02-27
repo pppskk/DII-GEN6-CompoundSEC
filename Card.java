@@ -1,8 +1,14 @@
 import java.util.List;
 
 public class Card extends BaseCard {
-    public Card(String cardId, List<Integer> floorAccess){
+    private String roomNumber;
+
+    public Card(String cardId, List<Integer> floorAccess, String roomNumber){
         super(cardId, floorAccess);
+        this.roomNumber=roomNumber;
+    }
+    public String getRoomNumber(){
+        return roomNumber;
     }
 
     @Override
@@ -24,11 +30,4 @@ public class Card extends BaseCard {
             System.out.println("⚠️ Floor " + floor + " is not accessible by Card: " + cardId);
         }
     }
-/*
-    @Override
-    public void displayCardInfo() {
-        System.out.println("Card ID: " + cardId + ", Accessible Floors: " + floorAccess);
-    }
-
- */
 }
