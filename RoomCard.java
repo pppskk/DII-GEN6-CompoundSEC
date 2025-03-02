@@ -1,9 +1,6 @@
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class RoomCard extends BaseCard{
+public class RoomCard extends BaseCard {
     private List<String> roomAccess;
 
     public RoomCard(String cardId, List<Integer> floorAccess, List<String> roomAccess) {
@@ -34,7 +31,7 @@ public class RoomCard extends BaseCard{
 
     @Override
     public void removeFloorAccess(int floor) {
-        floorAccess.remove(Integer.valueOf(floor)); // ✅ เพิ่มเมทอดนี้เพื่อแก้ error
+        floorAccess.remove(Integer.valueOf(floor));
     }
 
     @Override

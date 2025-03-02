@@ -1,32 +1,44 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 public class CardManage {
-    private List<BaseCard> cards = new ArrayList<>();
+    private List<BaseCard> cards;
+
+    public CardManage() {
+        cards = new ArrayList<>();
+    }
 
     public void addCard(BaseCard card) {
         cards.add(card);
-        System.out.println("✅ Added Card: " + card.getCardId());
+        AuditLogger.log("Card added: " + card.getCardId());
     }
 
-    public void displayAllCards() {
-        System.out.println("\n📋 All Cards:");
-        if (cards.isEmpty()){
-            System.out.println("No cards available.");
-        }else {
-            for (BaseCard card : cards) {
-                card.displayCardInfo();
-            }
-        }
+    public List<BaseCard> getAllCards() {
+        return cards;
     }
 
     public void removeCard(String cardId) {
-        cards.removeIf(card -> card.getCardId().equals(cardId));
-        System.out.println("❌ Removed Card: " + cardId);
+        Optional<BaseCard> cardOpt = cards.stream()
+                .filter(c -> c.getCardId().equals(cardId))
+                .findFirst();
+        if (cardOpt.isPresent()) {
+            cards.remove(cardOpt.get());
+            AuditLogger.log("Card removed: " + cardId);
+        } else {
+            AuditLogger.log("Attempted removal of non-existing card: " + cardId);
+        }
     }
 
-    public BaseCard getCardById(String cardId) {
-        return cards.stream().filter(card -> card.getCardId().equals(cardId)).findFirst().orElse(null);
+    // Example: modify floor access
+    public void modifyCardFloorAccess(String cardId, List<Integer> newFloors) {
+        Optional<BaseCard> cardOpt = cards.stream()
+                .filter(c -> c.getCardId().equals(cardId))
+                .findFirst();
+        if (cardOpt.isPresent()){
+            BaseCard card = cardOpt.get();
+            card.floorAccess = newFloors;
+            AuditLogger.log("Card " + cardId + " floor access modified to " + newFloors);
+        }
     }
 }

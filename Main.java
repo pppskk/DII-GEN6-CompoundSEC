@@ -1,20 +1,23 @@
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         CardManage manager = new CardManage();
 
-        // เพิ่มบัตรที่มีสิทธิ์ห้อง
-        manager.addCard(new RoomCard("Admin", Arrays.asList(1, 2, 3, 4, 5), Arrays.asList("301", "312")));
-        manager.addCard(new RoomCard("Customer", Arrays.asList(1, 2, 3), Arrays.asList("312")));
+        // สร้างบัตร Admin เพียงใบเดียวในตอนเริ่มต้น
+        manager.addCard(new AdminCard("Admin", Arrays.asList(1, 2, 3, 4, 5), true));
 
-        // ใช้ Facade ตรวจสอบสิทธิ์ก่อนขึ้นลิฟต์
-        AccessFacade accessFacade = new AccessFacade(manager);
+        // ไม่เพิ่มบัตร Customer ตอนแรก
 
-        // เปิด GUI สำหรับเลือกบัตร
+        // สร้าง RoomManager และเพิ่มห้องตัวอย่าง (ถ้าจำเป็น)
+        RoomManager roomManager = new RoomManager();
+        // ตัวอย่าง: ห้อง "312" ชั้น 2 รหัสผ่าน "pass123"
+        roomManager.addRoom(new Room("312", 2, "pass123"));
+
+        // สร้าง AccessFacade โดยส่ง CardManage และ RoomManager
+        AccessFacade accessFacade = new AccessFacade(manager, roomManager);
+
+        // เปิด ElevatorAccessGUI
         new ElevatorAccessGUI(manager, accessFacade);
     }
 }
