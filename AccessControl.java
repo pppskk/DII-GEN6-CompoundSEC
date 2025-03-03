@@ -5,4 +5,3 @@ public interface AccessControl {
     void displayCardInfo();
 }
 
-//เพิ่มฟังก์ชันในการบันทึกประวัติการเข้าออก (Access Log)
